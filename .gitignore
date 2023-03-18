@@ -3,3 +3,4 @@ node_modules/
 /routes/.DS_Store
 .env
 .env.local
+.DS_Store
