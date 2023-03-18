@@ -1,5 +1,5 @@
 const express = require("express");
-const { validation } = require("../../middleware");
+const { validation, authentificate } = require("../../middleware");
 const { ctrlWrapper } = require("../../helpers");
 const { auth: ctrl } = require('../../controllers');
 const { joiRegisterSchema, joiLoginSchema } = require('../../schemas/Joi');
@@ -10,4 +10,8 @@ router.post("/register", validation(joiRegisterSchema), ctrlWrapper(ctrl.registe
 
 router.post("/login", validation(joiLoginSchema), ctrlWrapper(ctrl.login));
 
-module.exports = router;
+router.get("/current", authentificate, ctrlWrapper(ctrl.getCurrent));
+
+router.post("/logout", authentificate, ctrlWrapper(ctrl.logout));
+
+module.exports = router;    
