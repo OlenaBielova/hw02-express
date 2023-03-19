@@ -2,8 +2,6 @@ const { HttpError } = require("../../helpers");
 const { User } = require("../../models");
 const bcrypt = require("bcrypt");
 
-// const { HttpError, ctrlWrapper } = require("../../helpers");
-
 const register = async (req, res) => {
     const { email, password } = req.body;
     const user = await User.findOne({ email });
